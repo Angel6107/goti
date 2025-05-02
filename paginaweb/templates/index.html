@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gran Aztlán: Casino online premium estilo azteca. Ruleta, Keno, Apuestas Deportivas, Bingo y más. ¡Suscríbete para la experiencia completa!">
+    <title>Gran Aztlán - Casino Premium Azteca</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Estilos CSS (Tema Oscuro Elegante - sin cambios mayores aquí, pero añadimos estilos para nuevas secciones) --- */
+        :root {
+            /* Paleta Oscura Inspirada en VSCode */
+            --vscode-bg-dark: #1E1E1E;
+            --vscode-bg-medium: #252526;
+            --vscode-bg-light: #2D2D2D;
+            --vscode-border: #333333;
+            --vscode-text-primary: #D4D4D4;
+            --vscode-text-secondary: #9CDCFE;
+            --vscode-text-highlight: #C586C0;
+            --vscode-keyword: #569CD6;
+            --vscode-comment: #6A9955;
+
+            /* Colores Aztèques adaptados */
+            --aztec-green-dark: #2E7D32;
+            --aztec-red-dark: #C62828;
+            --gold-primary: #FFD700;
+            --gold-secondary: #E4AF00;
+            --turquoise-primary: #4DD0E1;
+            --turquoise-secondary: #26C6DA;
+
+            /* Variables semánticas */
+            --bg-primary: var(--vscode-bg-dark);
+            --bg-secondary: var(--vscode-bg-medium);
+            --bg-tertiary: var(--vscode-bg-light);
+            --border-color: var(--vscode-border);
+            --text-primary: var(--vscode-text-primary);
+            --text-secondary: var(--vscode-text-secondary);
+            --text-dark-original: #1a1a1a;
+            --text-light-original: #f8f9fa;
+
+            /* Radios y Sombras */
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --shadow-light: 0 5px 15px rgba(0,0,0,0.2);
+            --shadow-medium: 0 10px 25px rgba(0,0,0,0.3);
+            --shadow-dark: 0 15px 35px rgba(0,0,0,0.4);
+            --transition-speed: 0.35s;
+            --sidebar-width: 260px;
+        }
+
+        /* ... (Resto de estilos base y de componentes sin cambios significativos, excepto los añadidos abajo) ... */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 100%; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-primary); color: var(--text-primary); line-height: 1.8; overflow-x: hidden; display: flex; }
+        img { max-width: 100%; display: block; height: auto; }
+        a { text-decoration: none; color: var(--vscode-text-secondary); transition: color var(--transition-speed) ease; }
+        a:hover { color: var(--gold-primary); }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 900; line-height: 1.3; }
+        h1 { color: var(--gold-primary); }
+        h2 { text-align: center; margin-bottom: 3.5rem; font-size: clamp(2.6rem, 7vw, 3.5rem); color: var(--turquoise-primary); font-weight: 900; position: relative; padding-bottom: 20px; }
+        h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 5px; background: linear-gradient(to right, var(--gold-secondary), var(--gold-primary), var(--gold-secondary)); border-radius: 3px; }
+        h2 i { margin-right: 18px; color: var(--aztec-green-dark); font-size: 0.9em; }
+        h3 { font-size: clamp(1.7rem, 5vw, 2.2rem); color: var(--vscode-text-highlight); font-weight: 900; margin-top: 3.5rem; margin-bottom: 2.5rem; padding-bottom: 12px; border-bottom: 4px solid var(--gold-secondary); display: inline-block; align-items: center; }
+        h3:first-of-type { margin-top: 0; }
+        h3 i { margin-right: 12px; color: var(--aztec-red-dark); font-size: 0.9em; }
+
+        .site-wrapper { display: flex; width: 100%; }
+        .sidebar { width: var(--sidebar-width); background-color: var(--bg-secondary); color: var(--text-primary); padding: 2rem 0; height: 100vh; position: fixed; top: 0; left: 0; overflow-y: auto; z-index: 1100; border-right: 4px solid var(--gold-primary); box-shadow: 5px 0 15px rgba(0,0,0,0.3); transform: translateX(0); transition: transform 0.4s ease; }
+        .sidebar .logo { text-align: center; padding: 0 1rem 2rem 1rem; font-size: 1.8rem; color: var(--gold-primary); display: block; border-bottom: 1px solid rgba(255, 215, 0, 0.3); margin-bottom: 2rem; }
+        .sidebar .logo i { margin-right: 10px; color: var(--turquoise-primary); }
+        .sidebar nav ul { list-style: none; padding: 0; }
+        .sidebar nav li a { display: flex; align-items: center; padding: 1rem 1.5rem; color: var(--text-primary); font-weight: 600; font-size: 1rem; letter-spacing: 0.8px; transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, padding-left var(--transition-speed) ease; border-left: 4px solid transparent; }
+        .sidebar nav li a i { margin-right: 15px; font-size: 1.2em; width: 25px; text-align: center; color: var(--gold-secondary); transition: color var(--transition-speed) ease; }
+        .sidebar nav li a:hover { background-color: rgba(255, 255, 255, 0.08); color: var(--gold-primary); padding-left: 1.8rem; }
+        .sidebar nav li a:hover i { color: var(--gold-primary); }
+        .sidebar nav li a.active { background-color: rgba(0, 0, 0, 0.2); border-left-color: var(--gold-primary); color: var(--gold-primary); font-weight: 700; }
+        .sidebar nav li a.active i { color: var(--gold-primary); }
+        .sidebar.open { transform: translateX(0); }
+
+        .main-content-area { width: calc(100% - var(--sidebar-width)); margin-left: var(--sidebar-width); position: relative; background-color: var(--bg-primary); transition: margin-left 0.4s ease, width 0.4s ease; }
+        header { background: var(--bg-secondary); color: var(--text-primary); padding: 0.8rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-light); border-bottom: 1px solid var(--border-color); width: 100%; }
+        header .container { display: flex; justify-content: flex-end; align-items: center; max-width: none; width: 95%; margin: 0 auto; }
+        header .logo { display: none; }
+        header nav { display: none; }
+        .user-actions { display: flex; align-items: center; gap: 0.5rem; /* Añadido gap */ flex-wrap: wrap; /* Permitir que envuelva en pantallas pequeñas */ }
+        .user-actions span, .user-actions .subscription-status { margin-right: 1rem; font-weight: 600; color: var(--text-primary); letter-spacing: 0.5px; font-size: 0.95rem; display: inline-block; padding: 0.2rem 0.5rem; border-radius: var(--border-radius-sm); }
+        .user-actions span i { color: var(--gold-primary); margin-right: 6px;}
+         /* Estilo para el estado de suscripción */
+        .user-actions .subscription-status { background-color: var(--vscode-comment); color: var(--text-light-original); border: 1px solid var(--aztec-green-dark); }
+        .user-actions .subscription-status.not-subscribed { background-color: var(--aztec-red-dark); color: var(--text-light-original); border: 1px solid #A02020;}
+        .user-actions .subscription-status i { margin-right: 5px; }
+
+        .user-actions button { background: linear-gradient(to bottom, var(--aztec-red-dark), #A02020); color: var(--text-light-original); border: 1px solid #801515; padding: 0.7rem 1.4rem; /* margin-left: 0.8rem; quitado por gap */ cursor: pointer; border-radius: var(--border-radius-sm); font-weight: 700; transition: all var(--transition-speed) ease; box-shadow: inset 0 -2px 3px rgba(0,0,0,0.3), 0 2px 4px rgba(0,0,0,0.2); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+        .user-actions button:hover { background: linear-gradient(to bottom, #D03030, var(--aztec-red-dark)); transform: translateY(-2px); box-shadow: inset 0 -2px 3px rgba(0,0,0,0.2), 0 4px 8px rgba(200, 40, 40, 0.4); color: var(--gold-primary); border-color: #A02020; }
+        .user-actions .logout-button { background: linear-gradient(to bottom, #616161, #424242); color: var(--text-light-original); border-color: #333; }
+        .user-actions .logout-button:hover { background: linear-gradient(to bottom, #757575, #505050); color: var(--gold-primary); border-color: #444; }
+
+        .hero { background: linear-gradient(rgba(46, 125, 50, 0.7), rgba(198, 40, 40, 0.75)), url('https://images.unsplash.com/photo-1581410719134-9d16b4bad3ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover; color: var(--text-light-original); padding: clamp(6rem, 20vh, 10rem) 0; text-align: center; min-height: 50vh; }
+        .hero .container { width: 90%; max-width: 1100px; margin: auto; }
+        .hero h1 { font-size: clamp(3rem, 10vw, 5.5rem); color: var(--gold-primary); }
+        .hero p { font-size: clamp(1.1rem, 3vw, 1.6rem); margin-bottom: 3rem; color: var(--text-light-original); }
+        .cta-button { background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary)); color: var(--text-dark-original); border: 2px solid var(--gold-secondary); padding: 1.4rem 3.5rem; font-size: 1.4rem; border-radius: var(--border-radius-sm); cursor: pointer; font-weight: 700; transition: all var(--transition-speed) ease; text-transform: uppercase; letter-spacing: 1.5px; display: inline-block; box-shadow: inset 0 -3px 6px rgba(0,0,0,0.2), 0 4px 6px rgba(0,0,0,0.1); }
+        .cta-button:hover { background: linear-gradient(135deg, var(--gold-secondary), var(--gold-primary)); transform: scale(1.03) translateY(-2px); box-shadow: inset 0 -3px 6px rgba(0,0,0,0.15), 0 9px 18px rgba(255, 215, 0, 0.4); color: var(--aztec-green-dark); }
+        .cta-button i { margin-left: 10px; }
+
+        main { padding: 4rem 0; }
+        main .container { width: 95%; max-width: 1400px; margin: auto; }
+
+        section { margin-bottom: 5rem; background-color: var(--bg-tertiary); padding: clamp(3rem, 7vw, 4.5rem); border-radius: var(--border-radius-md); box-shadow: var(--shadow-medium); border: 1px solid var(--border-color); border-top: 6px solid var(--aztec-green-dark); overflow: hidden; }
+        #sports { border-top-color: var(--turquoise-primary); }
+        #bingo { border-top-color: var(--aztec-red-dark); }
+        #live-casino { border-top-color: var(--gold-primary); }
+        #promotions { border-top-color: var(--turquoise-secondary); }
+        #about, #subscriptions, #table-games /* Agrupamos secciones con fondo secundario */ { background-color: var(--bg-secondary); border-top-color: var(--gold-secondary); }
+
+        /* Estilos para la nueva sección de descripción (#about ahora) */
+        .about-section .about-columns {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap; /* Para que se apile en pantallas pequeñas */
+            margin-top: 2rem;
+        }
+        .about-section .about-column {
+            flex: 1;
+            min-width: 280px; /* Ancho mínimo para cada columna */
+        }
+         .about-section .about-column h3 { /* Subtítulos dentro de About */
+             font-size: 1.6rem; /* Más pequeños */
+             color: var(--turquoise-primary);
+             border-bottom: 2px solid var(--gold-primary);
+             margin-bottom: 1.5rem;
+        }
+         .about-section .about-column ul { list-style: none; padding-left: 0; }
+         .about-section .about-column ul li { margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; }
+         .about-section .about-column ul li::before { content: "\f00c"; /* Icono check de FontAwesome */ font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--aztec-green-dark); position: absolute; left: 0; top: 3px; }
+
+
+        /* Estilos para la sección de Suscripciones */
+        #subscriptions { border-top-color: var(--vscode-text-highlight); } /* Borde superior magenta */
+        .subscription-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        .subscription-plan {
+            background-color: var(--bg-tertiary);
+            padding: 2.5rem;
+            border-radius: var(--border-radius-md);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: var(--shadow-light);
+        }
+        .subscription-plan:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+        }
+        .subscription-plan h3 { /* Título del plan */
+             margin-top: 0;
+             margin-bottom: 1rem;
+             font-size: 2rem;
+             color: var(--gold-primary);
+             border-bottom: none; /* Quitar borde inferior aquí */
+             font-family: 'Playfair Display', serif;
+        }
+        .subscription-plan .price {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--turquoise-primary);
+            margin-bottom: 0.5rem;
+        }
+        .subscription-plan .price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+        .subscription-plan ul {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+            text-align: left;
+            flex-grow: 1; /* Para empujar el botón hacia abajo */
+        }
+        .subscription-plan ul li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.8rem;
+            position: relative;
+            color: var(--text-primary);
+        }
+        .subscription-plan ul li::before {
+             content: "\f14a"; /* Check square o similar */
+             font-family: "Font Awesome 6 Free";
+             font-weight: 900;
+             color: var(--aztec-green-dark);
+             position: absolute;
+             left: 0;
+             top: 3px;
+             font-size: 1.1em;
+        }
+         /* Estilo específico para plan destacado */
+        .subscription-plan.featured {
+             border: 2px solid var(--gold-primary);
+             transform: scale(1.03); /* Hacerlo ligeramente más grande */
+             background-color: var(--bg-secondary); /* Fondo un poco diferente */
+        }
+         .subscription-plan.featured h3 { color: var(--turquoise-primary); }
+         .subscription-plan.featured .price { color: var(--gold-primary); }
+
+
+        /* Grids de juegos */
+        .game-grid, .promo-grid, .sports-grid, .bingo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            min-height: 150px; /* Altura mínima por si está vacío al inicio */
+            position: relative; /* Para el mensaje de carga */
+        }
+        /* Mensaje de carga dentro de los grids */
+        .game-grid p, .promo-grid p, .sports-grid p, .bingo-grid p {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            text-align: center; /* Asegurar centrado */
+        }
+        /* Ocultar el párrafo si el grid tiene contenido */
+        .game-grid:not(:empty) p,
+        .promo-grid:not(:empty) p,
+        .sports-grid:not(:empty) p,
+        .bingo-grid:not(:empty) p {
+            display: none;
+        }
+
+
+        /* Tarjetas de juego/promo/apuesta/bingo (estilos unificados) */
+        .game-card, .promo-card, .sports-card, .bingo-card {
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            text-align: center;
+            background-color: var(--bg-secondary);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+        }
+        .game-card:hover, .promo-card:hover, .sports-card:hover, .bingo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-dark);
+        }
+        .card-image {
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 16 / 10; /* Proporción para las imágenes */
+            background-color: var(--bg-primary); /* Fondo mientras carga imagen */
+        }
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .game-card:hover .card-image img,
+        .sports-card:hover .card-image img,
+        .bingo-card:hover .card-image img {
+            transform: scale(1.08); /* Efecto zoom al pasar el ratón */
+        }
+        .card-content {
+            padding: 2rem;
+            flex-grow: 1; /* Permite que el contenido crezca y empuje el botón abajo */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Espacio entre título/desc y botón */
+        }
+        .card-content h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            color: var(--vscode-text-highlight); /* Color para títulos de tarjeta */
+            border-bottom: none; /* Sin borde inferior en títulos de tarjeta */
+            padding-bottom: 0;
+            font-family: 'Playfair Display', serif;
+            line-height: 1.3;
+            display: block; /* Asegura que sea bloque */
+        }
+        .card-content p {
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 2rem; /* Espacio antes del botón */
+            flex-grow: 1; /* Permite que el párrafo ocupe espacio */
+        }
+        /* Estilo unificado para botones de acción en tarjetas */
+        .play-button, .details-button, .bet-button, .subscribe-button {
+            background: linear-gradient(135deg, var(--aztec-green-dark), #1B5E20);
+            color: var(--text-light-original);
+            border: 2px solid #103E13;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            font-weight: 700;
+            transition: all var(--transition-speed) ease;
+            width: 100%; /* Ocupa todo el ancho disponible */
+            margin-top: auto; /* Se pega abajo si hay espacio */
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 1rem;
+            box-shadow: inset 0 -3px 6px rgba(0,0,0,0.4), 0 4px 6px rgba(0,0,0,0.2);
+        }
+        .play-button:hover, .details-button:hover, .bet-button:hover, .subscribe-button:hover {
+            background: linear-gradient(135deg, #388E3C, var(--aztec-green-dark));
+            transform: scale(1.03) translateY(-2px);
+            box-shadow: inset 0 -3px 6px rgba(0,0,0,0.3), 0 9px 18px rgba(46, 125, 50, 0.5);
+            color: var(--text-light-original);
+            border-color: #1B5E20;
+        }
+        .play-button i, .details-button i, .bet-button i, .subscribe-button i { margin-left: 10px; }
+
+        /* Botón específico de apuestas deportivas (distinto color) */
+        .sports-card .bet-button {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+            color: var(--text-dark-original);
+            border-color: var(--gold-secondary);
+        }
+        .sports-card .bet-button:hover {
+            background: linear-gradient(135deg, var(--gold-secondary), var(--gold-primary));
+            color: var(--aztec-green-dark);
+            box-shadow: inset 0 -3px 6px rgba(0,0,0,0.2), 0 9px 18px rgba(255, 215, 0, 0.4);
+        }
+         /* Botón de Suscribirse */
+        .subscribe-button {
+            background: linear-gradient(135deg, var(--turquoise-primary), var(--turquoise-secondary));
+            color: var(--text-dark-original);
+            border-color: var(--turquoise-secondary);
+        }
+        .subscribe-button:hover {
+            background: linear-gradient(135deg, var(--turquoise-secondary), var(--turquoise-primary));
+            color: var(--bg-primary);
+            box-shadow: inset 0 -3px 6px rgba(0,0,0,0.2), 0 9px 18px rgba(77, 208, 225, 0.4);
+        }
+        /* Botón Suscribirse destacado */
+        .subscription-plan.featured .subscribe-button {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+            color: var(--text-dark-original);
+            border-color: var(--gold-secondary);
+        }
+         .subscription-plan.featured .subscribe-button:hover {
+            background: linear-gradient(135deg, var(--gold-secondary), var(--gold-primary));
+            color: var(--aztec-green-dark);
+        }
+
+        /* Estilo para botones deshabilitados (cuando no está suscrito) */
+        .play-button:disabled, .bet-button:disabled {
+            background: #444 !important; /* Usar important para sobrescribir gradientes */
+            color: #888 !important;
+            border-color: #555 !important;
+            cursor: not-allowed !important;
+            transform: none !important;
+            box-shadow: inset 0 -2px 3px rgba(0,0,0,0.3) !important;
+        }
+        .play-button:disabled::after, .bet-button:disabled::after { /* Usar pseudo-elemento para el texto adicional */
+             content: " (Requiere Suscripción)";
+             font-size: 0.8em;
+             display: block; /* Para que aparezca debajo */
+             margin-top: 5px;
+             color: var(--aztec-red-dark);
+             font-weight: normal;
+             text-transform: none; /* Sin mayúsculas */
+             letter-spacing: normal; /* Sin espaciado extra */
+        }
+
+
+        /* Footer (sin cambios) */
+        footer { background: var(--aztec-red-dark); color: #cccccc; padding: 4rem 0 2.5rem 0; margin-top: 5rem; border-top: 10px solid var(--gold-primary); }
+        footer .container { width: 95%; max-width: 1400px; margin: auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .footer-logo { margin-bottom: 2rem; }
+        .footer-logo .logo { font-size: 2.2rem; color: var(--gold-primary); display: block; }
+        .footer-links { margin-bottom: 2rem; padding-left: 0; }
+        .footer-links a { color: var(--text-light-original); margin: 0 1rem; font-size: 1rem; transition: color var(--transition-speed) ease; font-weight: 600; letter-spacing: 0.5px; }
+        .footer-links a:hover { color: var(--turquoise-primary); }
+        .social-media { margin-bottom: 2.5rem; }
+        .social-media a { color: var(--text-light-original); margin: 0 1.2rem; font-size: 2rem; transition: color var(--transition-speed) ease, transform var(--transition-speed) ease; }
+        .social-media a:hover { color: var(--turquoise-primary); transform: translateY(-5px) scale(1.1); }
+        .copyright { margin-top: 2rem; font-size: 0.9rem; color: var(--text-light-original); opacity: 0.9; letter-spacing: 0.5px; }
+
+        /* Área de Estado (sin cambios) */
+        #game-status-area { position: fixed; bottom: 20px; left: calc(var(--sidebar-width) + 20px); transform: translateX(0) scale(0.95); background-color: var(--vscode-comment); color: var(--text-light-original); padding: 15px 30px; border-radius: var(--border-radius-md); z-index: 1001; font-weight: 700; box-shadow: 0 6px 20px rgba(0,0,0,0.5); display: block; transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease; opacity: 0; pointer-events: none; border: 3px solid var(--gold-secondary); font-size: 1.1rem; text-align: center; letter-spacing: 1px; max-width: 400px; }
+        #game-status-area.loading { background-color: var(--vscode-keyword); border-color: var(--gold-primary); color: var(--text-light-original); }
+        #game-status-area.visible { opacity: 1; transform: scale(1); pointer-events: auto; }
+        /* Color específico para errores en status */
+        #game-status-area.error { background-color: var(--aztec-red-dark); border-color: #A02020;}
+
+        /* Modales (Login, Registro, Simulación, Juego Lite - sin cambios estructurales) */
+        .modal { display: none; position: fixed; z-index: 1200; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(30, 30, 30, 0.9); animation: fadeIn 0.5s ease; backdrop-filter: blur(8px); }
+        .modal-content { background-color: var(--bg-secondary); color: var(--text-primary); margin: 10% auto; padding: 40px; border: 3px solid var(--gold-primary); width: 90%; max-width: 550px; border-radius: var(--border-radius-md); position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.5); animation: slideIn 0.6s cubic-bezier(0.25, 1, 0.5, 1.1); }
+        .close-button { position: absolute; top: 15px; right: 20px; color: var(--vscode-text-secondary); font-size: 2.5rem; font-weight: bold; cursor: pointer; transition: transform 0.2s, color 0.2s; }
+        .close-button:hover, .close-button:focus { color: var(--gold-primary); transform: scale(1.1); text-decoration: none; }
+        .modal h2 { text-align: center; margin-bottom: 2.5rem; font-size: clamp(2rem, 6vw, 2.5rem); color: var(--turquoise-primary); font-weight: 900; position: relative; padding-bottom: 15px; }
+        .modal h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 70px; height: 4px; background: linear-gradient(to right, var(--gold-secondary), var(--gold-primary), var(--gold-secondary)); border-radius: 2px; }
+        .modal h2 i { margin-right: 15px; color: var(--aztec-green-dark); font-size: 0.9em; }
+        .modal p { margin-bottom: 1.5rem; text-align: center; font-size: 1.1rem; color: var(--text-primary); }
+        .modal form { display: flex; flex-direction: column; gap: 1.5rem; }
+        .modal label { font-weight: 600; color: var(--vscode-text-secondary); font-size: 1rem; margin-bottom: -0.8rem; text-align: left;}
+        .modal input[type="text"], .modal input[type="email"], .modal input[type="password"] { padding: 1rem; border: 2px solid var(--border-color); border-radius: var(--border-radius-sm); font-size: 1rem; font-family: 'Poppins', sans-serif; background-color: var(--bg-tertiary); color: var(--text-primary); transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+        .modal input[type="text"]:focus, .modal input[type="email"]:focus, .modal input[type="password"]:focus { border-color: var(--gold-primary); outline: none; box-shadow: 0 0 8px rgba(255, 215, 0, 0.5); background-color: var(--bg-primary); }
+        .modal button.cta-button { margin-top: 1.5rem; padding: 1.1rem 2rem; font-size: 1.1rem; width: 100%; }
+
+        /* Modal Simulación Juego (sin cambios estructurales) */
+        #gameSimulationModal .modal-content { background: linear-gradient(145deg, var(--bg-secondary) 0%, var(--bg-primary) 100%); color: var(--text-primary); border-color: var(--gold-secondary); text-align: center; }
+        #gameSimulationModal h2 { color: var(--gold-primary); font-size: 2.2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        #gameSimulationModal p { color: var(--text-primary); font-size: 1.2rem; margin-bottom: 2rem; }
+        #gameSimulationModal img { max-width: 80%; height: auto; margin: 1rem auto 2rem auto; border-radius: var(--border-radius-sm); border: 3px solid var(--gold-primary); background-color: rgba(0,0,0,0.3); }
+        #gameSimulationModal .modal-actions { margin-top: 1.5rem; }
+        #gameSimulationModal button { background: var(--aztec-red-dark); color: var(--text-light-original); border: 1px solid #A02020; padding: 0.8rem 2rem; border-radius: var(--border-radius-sm); font-weight: 600; cursor: pointer; transition: background-color 0.3s ease; }
+        #gameSimulationModal button:hover { background-color: #E53935; }
+        /* Añadir espacio para resultado de juego backend */
+        #simulationGameResult {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-sm);
+            color: var(--text-secondary); /* Azul claro para resultados */
+            font-weight: bold;
+            min-height: 2em;
+            text-align: center;
+            word-wrap: break-word; /* Para que no se desborde */
+        }
+
+        /* ----- Modal Juego Lite ----- */
+        #liteGameModal .modal-content {
+            max-width: 650px;
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+        .lite-game-header {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        #liteGameInfo span {
+            margin: 0 0.5rem;
+            color: var(--text-secondary);
+        }
+        /* Estilo para el contenido específico del juego Lite */
+        #liteGameContent {
+            text-align: center; /* Centrar contenido como los dados */
+        }
+         /* Contenedor específico para los dados Lite */
+        #liteGameContent .dado-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            min-height: 110px; /* Altura mínima para los dados */
+        }
+         /* Estilo para los dados Lite (reutilizando .dado) */
+        .dado {
+            display: inline-block; /* Cambiado para flex */
+            border: 2px solid var(--border-color);
+            width: 100px;
+            height: 100px;
+            position: relative; /* Para posicionar puntos */
+            background-color: var(--text-light-original); /* Fondo blanco para dados */
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-light);
+        }
+         /* Estilo para los puntos del dado (reutilizando .punto) */
+        .punto {
+            position: absolute;
+            width: 18px; /* Tamaño del punto */
+            height: 18px;
+            background-color: var(--aztec-red-dark); /* Color del punto */
+            border-radius: 50%;
+            /* Posicionamiento se hará con style.left/top en JS */
+            transform: translate(-50%, -50%); /* Centrar el punto en su posición */
+        }
+        /* Estilo para el resultado y suma en el modal Lite */
+        #liteGameResult, #liteGameSum {
+            text-align: center;
+            font-size: 1.3rem;
+            min-height: 1.5em;
+            margin-top: 1rem; /* Espacio entre ellos y los dados/acciones */
+            color: var(--gold-primary); /* Color dorado para resultados */
+            font-weight: bold;
+        }
+        /* Acciones del modal Lite */
+        #liteGameModal .modal-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem; /* Espacio sobre los botones */
+        }
+        #liteGameModal .modal-actions button {
+            padding: 0.9rem 1.8rem;
+            font-size: 1rem;
+        }
+        /* Botón principal de acción */
+        #liteGameModal .modal-actions #liteGameActionBtn {
+             background: linear-gradient(135deg, var(--aztec-green-dark), #1B5E20);
+             color: var(--text-light-original);
+             border: 2px solid #103E13;
+        }
+        #liteGameModal .modal-actions #liteGameActionBtn:hover {
+            background: linear-gradient(135deg, #388E3C, var(--aztec-green-dark));
+            border-color: #1B5E20;
+        }
+        /* Botón secundario (Cerrar) */
+        #liteGameModal .modal-actions button:last-child {
+            background: #616161;
+            color: var(--text-light-original);
+            border-color: #444;
+        }
+        #liteGameModal .modal-actions button:last-child:hover { background: #757575; }
+        /* Texto informativo en modal Lite */
+        #liteGameModal .info-text {
+            font-size: 0.8rem;
+            margin-top: 2rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+        /* Animación para dados (opcional) */
+        @keyframes roll {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        .dado.rolling {
+            animation: roll 0.5s ease-in-out;
+        }
+        /* Estilos para otros juegos Lite (como slots) irían aquí */
+        .lite-slot-reel { font-size: 3rem; border: 1px solid var(--border-color); padding: 10px 15px; width: 70px; text-align: center; background: var(--text-light-original); color: var(--text-dark-original); border-radius: 3px; }
+
+
+        /* Modal de Bienvenida/Suscripción */
+        #welcomeModal .modal-content {
+            max-width: 600px;
+            text-align: center;
+            background: linear-gradient(145deg, var(--bg-secondary), var(--aztec-green-dark)); /* Gradiente temático */
+            border-color: var(--gold-secondary);
+        }
+        #welcomeModal h2 {
+             color: var(--gold-primary);
+             font-size: 2.2rem;
+        }
+        #welcomeModal h2 i { color: var(--turquoise-primary);}
+        #welcomeModal p {
+             color: var(--text-light-original);
+             font-size: 1.1rem;
+             margin-bottom: 1.5rem;
+        }
+        #welcomeModal .modal-actions {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        #welcomeModal .modal-actions button {
+             padding: 0.8rem 1.8rem;
+        }
+         /* Botón para ir a suscripciones */
+        #welcomeModal .go-subscribe-btn {
+             background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+             color: var(--text-dark-original);
+             border-color: var(--gold-secondary);
+        }
+         #welcomeModal .go-subscribe-btn:hover {
+             background: linear-gradient(135deg, var(--gold-secondary), var(--gold-primary));
+             color: var(--aztec-green-dark);
+        }
+         /* Botón para cerrar y continuar Lite */
+         #welcomeModal .close-welcome-btn {
+              background: var(--aztec-red-dark);
+              color: var(--text-light-original);
+              border-color: #A02020;
+         }
+          #welcomeModal .close-welcome-btn:hover {
+              background: #E53935;
+          }
+
+
+        /* Animaciones (sin cambios) */
+        @keyframes fadeIn { from { opacity: 0; backdrop-filter: blur(0px); } to { opacity: 1; backdrop-filter: blur(8px); } }
+        @keyframes slideIn { from { transform: translateY(-60px) scale(0.95); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
+
+        /* Media Queries (adaptar nuevas secciones si es necesario) */
+        @media (max-width: 1200px) {
+            :root { --sidebar-width: 220px; }
+            .main-content-area { width: calc(100% - var(--sidebar-width)); margin-left: var(--sidebar-width); }
+            #game-status-area { left: calc(var(--sidebar-width) + 15px); }
+        }
+        @media (max-width: 992px) {
+            .sidebar { transform: translateX(-100%); z-index: 1300; }
+            .sidebar.open { transform: translateX(0); }
+            .main-content-area { width: 100%; margin-left: 0; }
+            .sidebar-toggle { display: block; position: fixed; top: 15px; left: 15px; z-index: 1400; background: var(--aztec-green-dark); color: var(--gold-primary); border: 2px solid var(--gold-secondary); border-radius: var(--border-radius-sm); padding: 0.5rem 0.8rem; font-size: 1.5rem; cursor: pointer; box-shadow: var(--shadow-medium); }
+            header .container { padding-right: 15px; }
+            #game-status-area { left: 15px; bottom: 15px; max-width: calc(100% - 30px); }
+            .game-grid, .promo-grid, .sports-grid, .bingo-grid, .subscription-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+        }
+        @media (max-width: 768px) {
+            h2 { font-size: clamp(2.2rem, 6vw, 2.8rem); }
+            h3 { font-size: clamp(1.5rem, 5vw, 1.9rem); }
+            section { padding: clamp(2rem, 6vw, 3.5rem); }
+            .game-grid, .promo-grid, .sports-grid, .bingo-grid, .subscription-grid { grid-template-columns: 1fr; gap: 2.5rem;}
+            footer .container { width: 90%; }
+            .footer-links a { margin: 0.5rem 0.8rem; display: inline-block; }
+            .social-media a { margin: 0 1rem; font-size: 1.8rem; }
+            .modal-content { width: 95%; margin: 15% auto; padding: 25px; }
+            .modal h2 { font-size: clamp(1.8rem, 5vw, 2.2rem); }
+            .dado { width: 80px; height: 80px;}
+            .punto { width: 14px; height: 14px;}
+             #liteGameModal .dado-container { gap: 1rem; } /* Reducir espacio entre dados */
+        }
+        @media (max-width: 480px) {
+            :root { --sidebar-width: 85%; }
+            .sidebar .logo { font-size: 1.6rem; padding-bottom: 1.5rem; }
+            .sidebar nav li a { font-size: 0.95rem; padding: 0.9rem 1.2rem; }
+            .sidebar nav li a i { font-size: 1.1em; margin-right: 12px; }
+            .cta-button { padding: 1rem 2rem; font-size: 1.1rem; }
+            .card-content { padding: 1.5rem; }
+            .card-content h3 { font-size: 1.6rem; }
+            .play-button, .details-button, .bet-button, .subscribe-button { padding: 0.9rem 1rem; font-size: 0.9rem;}
+            .user-actions { flex-wrap: wrap; justify-content: flex-end; gap: 0.5rem; }
+            .user-actions span, .user-actions .subscription-status { margin-right: 0.5rem; font-size: 0.9rem; }
+            .user-actions button { padding: 0.6rem 1rem; font-size: 0.8rem; }
+            #liteGameModal .modal-content { padding: 20px;}
+            .dado { width: 60px; height: 60px;}
+            .punto { width: 10px; height: 10px;}
+            #liteGameModal .modal-actions button { font-size: 0.9rem; padding: 0.8rem 1.5rem;}
+            .subscription-plan { padding: 1.5rem; }
+            .subscription-plan .price { font-size: 2.2rem; }
+            .subscription-plan h3 { font-size: 1.8rem; }
+             #liteGameModal .dado-container { flex-direction: column; align-items: center; gap: 1.5rem;} /* Apilar dados */
+        }
+        .sidebar-toggle { display: none; } /* Oculto por defecto, se muestra en media query */
+    </style>
+</head>
+<body>
+
+    <div class="site-wrapper">
+
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle Navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <aside class="sidebar" id="sidebar">
+            <a href="#home" class="logo scroll-link">
+                <i class="fas fa-sun"></i> Gran Aztlán
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#table-games" class="scroll-link"><i class="fas fa-dice-d20"></i> Juegos de Mesa</a></li>
+                     <li><a href="#subscriptions" class="scroll-link"><i class="fas fa-crown"></i> Suscripciones</a></li>
+                    <li><a href="#live-casino" class="scroll-link"><i class="fas fa-broadcast-tower"></i> Casino en Vivo</a></li>
+                    <li><a href="#sports" class="scroll-link"><i class="fas fa-futbol"></i> Apuestas Deportivas</a></li>
+                    <li><a href="#bingo" class="scroll-link"><i class="fas fa-border-all"></i> Bingo Sagrado</a></li>
+                    <li><a href="#promotions" class="scroll-link"><i class="fas fa-gifts"></i> Ofrendas (Bonos)</a></li>
+                     <li><a href="#about" class="scroll-link"><i class="fas fa-feather-alt"></i> Conoce Aztlán</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="main-content-area">
+
+            <header>
+                <div class="container">
+                    <div class="user-actions" id="user-actions-container">
+                        <span>Tributo: <i class="fas fa-gem"></i> ---</span>
+                        <button id="login-btn" onclick="openModal('loginModal')">Entrar</button>
+                        <button id="register-btn" onclick="openModal('registerModal')">Unirse</button>
+                    </div>
+                </div>
+            </header>
+
+            <section class="hero" id="home">
+                <div class="container">
+                     <h1>Gran Aztlán: Donde los Dioses Juegan</h1>
+                    <p>La experiencia de casino premium definitiva. Juegos de mesa, apuestas deportivas y bonos legendarios. ¡Suscríbete y recibe tu ofrenda!</p>
+                    <a href="#table-games" class="cta-button scroll-link">Explorar Juegos <i class="fas fa-dice"></i></a>
+                </div>
+            </section>
+
+            <main>
+                <div class="container">
+
+                    <section id="about" class="about-section">
+                        <h2><i class="fas fa-feather-alt"></i> Bienvenido a Gran Aztlán</h2>
+                        <p style="text-align: center; max-width: 900px; margin: -1rem auto 3rem auto; font-size: 1.15rem;">
+                            Sumérgete en un imperio donde la mística azteca se encuentra con la emoción del juego moderno. En Gran Aztlán, te ofrecemos una experiencia de casino online sin igual, diseñada tanto para guerreros novatos como para sumos sacerdotes del juego.
+                        </p>
+                        <div class="about-columns">
+                            <div class="about-column">
+                                <h3><i class="fas fa-shield-alt"></i> Seguridad y Confianza</h3>
+                                <ul>
+                                    <li>Tecnología de encriptación de última generación (simulada).</li>
+                                    <li>Plataforma auditada por entidades independientes (simulado).</li>
+                                    <li>Compromiso total con el Juego Responsable.</li>
+                                    <li>Soporte al jugador 24/7 vía mensajeros divinos (chat simulado).</li>
+                                </ul>
+                            </div>
+                            <div class="about-column">
+                                <h3><i class="fas fa-dice"></i> Variedad Inigualable</h3>
+                                <ul>
+                                    <li>Juegos de mesa clásicos y variantes exclusivas (incluye Dados Lite!).</li>
+                                    <li>Casino en vivo inmersivo (simulado).</li>
+                                    <li>Las mejores cuotas en apuestas deportivas.</li>
+                                    <li>Salas de Bingo con pozos progresivos (simulados).</li>
+                                </ul>
+                            </div>
+                             <div class="about-column">
+                                <h3><i class="fas fa-crown"></i> Experiencia Premium</h3>
+                                <ul>
+                                    <li>Bonos y promociones generosas para jugadores leales.</li>
+                                     <li>Planes de suscripción con beneficios exclusivos.</li>
+                                    <li>Interfaz rápida, intuitiva y optimizada para móviles.</li>
+                                    <li>Retiros rápidos y seguros (simulado).</li>
+                                </ul>
+                            </div>
+                        </div>
+                         <p style="text-align:center; margin-top: 3rem; font-style: italic;">
+                            <strong>Recuerda:</strong> Gran Aztlán opera con moneda virtual ("Tributo") únicamente con fines de entretenimiento. No se utiliza ni se gana dinero real.
+                         </p>
+                    </section>
+
+                    <section id="table-games">
+                        <h2><i class="fas fa-dice-d20"></i> Rituales de Mesa</h2>
+                        <h3><i class="fas fa-hat-wizard"></i> Clásicos y Juegos del Servidor</h3>
+                        <div class="game-grid" id="table-games-grid-container">
+                            <p>Cargando juegos de mesa...</p>
+                            </div>
+                    </section>
+
+                    <section id="subscriptions">
+                         <h2><i class="fas fa-crown"></i> Asciende en el Imperio: Suscripciones</h2>
+                         <p style="text-align: center; max-width: 800px; margin: -1rem auto 3rem auto;">
+                             Desbloquea todo el potencial de Gran Aztlán con nuestros planes exclusivos. Obtén bonos, acceso prioritario y recompensas dignas de un Tlatoani. (Precios en Pesos Mexicanos - MXN - Simulado).
+                         </p>
+                         <div class="subscription-grid">
+                             <div class="subscription-plan">
+                                 <h3><i class="fas fa-shield-alt"></i> Obsidiana</h3>
+                                 <div class="price">$99 <span>MXN/mes</span></div>
+                                 <ul>
+                                     <li>Acceso completo a juegos Lite (¡incluye Dados!).</li>
+                                     <li>Bono de Bienvenida Pequeño (100 Tributo).</li>
+                                     <li>Soporte estándar.</li>
+                                     <li>Participación en torneos básicos.</li>
+                                 </ul>
+                                 <button class="subscribe-button" data-tier="Obsidiana" onclick="handleSubscriptionAttempt('Obsidiana')">Elegir Obsidiana <i class="fas fa-arrow-right"></i></button>
+                             </div>
+
+                             <div class="subscription-plan featured">
+                                 <h3><i class="fas fa-feather-alt"></i> Quetzal</h3>
+                                 <div class="price">$249 <span>MXN/mes</span></div>
+                                 <ul>
+                                     <li>Todo lo de Obsidiana MÁS:</li>
+                                     <li>Acceso a TODOS los juegos (incluye simulados y de servidor).</li>
+                                     <li>Bono de Bienvenida Quetzal (500 Tributo).</li>
+                                     <li>Giros gratuitos semanales en slots seleccionados (simulado).</li>
+                                     <li>Soporte prioritario.</li>
+                                     <li>Límites de apuesta aumentados (simulado).</li>
+                                 </ul>
+                                  <button class="subscribe-button" data-tier="Quetzal" onclick="handleSubscriptionAttempt('Quetzal')">Elegir Quetzal <i class="fas fa-star"></i></button>
+                             </div>
+
+                             <div class="subscription-plan">
+                                 <h3><i class="fas fa-paw"></i> Jaguar</h3>
+                                 <div class="price">$499 <span>MXN/mes</span></div>
+                                 <ul>
+                                     <li>Todo lo de Quetzal MÁS:</li>
+                                     <li>Bono de Bienvenida Jaguar Supremo (1500 Tributo).</li>
+                                     <li>Cashback semanal (simulado).</li>
+                                     <li>Acceso anticipado a nuevos juegos.</li>
+                                     <li>Gestor de cuenta personal (simulado).</li>
+                                     <li>Invitaciones a eventos exclusivos (simulados).</li>
+                                 </ul>
+                                 <button class="subscribe-button" data-tier="Jaguar" onclick="handleSubscriptionAttempt('Jaguar')">Elegir Jaguar <i class="fas fa-gem"></i></button>
+                             </div>
+                         </div>
+                         <p style="font-size: 0.9rem; text-align: center; margin-top: 2rem; color: var(--text-secondary);">
+                             *La suscripción se renueva automáticamente cada mes. Puedes cancelar en cualquier momento (simulado). No se realizan cargos reales.
+                         </p>
+                      </section>
+
+                    <section id="live-casino">
+                        <h2><i class="fas fa-broadcast-tower"></i> Templo en Vivo (Simulado)</h2>
+                        <p style="text-align:center; max-width: 850px; margin: 0 auto 3rem auto; font-size: 1.1rem;">Conéctate con Sacerdotes del Juego en la experiencia más inmersiva (virtual).</p>
+                        <div class="game-grid" id="live-casino-grid-container">
+                           <p>Cargando mesas en vivo...</p>
+                           </div>
+                    </section>
+
+                    <section id="sports">
+                        <h2><i class="fas fa-futbol"></i> Campo de Batalla Deportivo</h2>
+                        <p style="text-align: center; max-width: 900px; margin: -1rem auto 3rem auto; font-size: 1.15rem;">
+                            Demuestra tu conocimiento y predice los resultados de los eventos más emocionantes. Consulta las cuotas y realiza tus apuestas (simuladas). ¡Que los dioses guíen tu elección!
+                        </p>
+                        <h3><i class="fas fa-trophy"></i> Eventos Destacados</h3>
+                        <div class="sports-grid" id="sports-grid-container">
+                             <article class="sports-card" data-game-type="simulated_frontend" data-game-id="sports-futbol-1">
+                                <div class="card-image">
+                                    <img src="https://via.placeholder.com/600x360/2E7D32/FFFFFF?text=Futbol+Azteca" alt="Partido de Fútbol">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Final Copa del Sol: Águilas vs Jaguares</h3>
+                                    <p>El clásico enfrentamiento por la supremacía. Cuotas: Águilas (1.85), Empate (3.50), Jaguares (4.20).</p>
+                                    <button class="bet-button" onclick="simulateGameLaunch({ name: 'Apuesta Fútbol: Águilas vs Jaguares', description: 'Simulación de apuesta. La función completa requiere suscripción.', imageUrl: 'https://via.placeholder.com/600x360/2E7D32/FFFFFF?text=Futbol+Azteca' })">Apostar <i class="fas fa-coins"></i></button>
+                                </div>
+                            </article>
+
+                            <article class="sports-card" data-game-type="simulated_frontend" data-game-id="sports-boxeo-1">
+                                <div class="card-image">
+                                    <img src="https://via.placeholder.com/600x360/C62828/FFFFFF?text=Boxeo+Ancestral" alt="Combate de Boxeo">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Título Pluma: Guerrero Kukulcán vs Sombra Nocturna</h3>
+                                    <p>Combate por el cinturón. Cuotas: Kukulcán (1.50), Sombra Nocturna (2.50).</p>
+                                    <button class="bet-button" onclick="simulateGameLaunch({ name: 'Apuesta Boxeo: Kukulcán vs Sombra Nocturna', description: 'Simulación de apuesta. La función completa requiere suscripción.', imageUrl: 'https://via.placeholder.com/600x360/C62828/FFFFFF?text=Boxeo+Ancestral' })">Apostar <i class="fas fa-coins"></i></button>
+                                </div>
+                            </article>
+
+                             <article class="sports-card" data-game-type="simulated_frontend" data-game-id="sports-pelota-1">
+                                <div class="card-image">
+                                    <img src="https://via.placeholder.com/600x360/569CD6/FFFFFF?text=Juego+de+Pelota" alt="Juego de Pelota">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Campeonato Tlachtli: Este vs Oeste</h3>
+                                    <p>El ancestral juego de pelota define al campeón. Cuotas: Equipo Este (2.10), Equipo Oeste (1.75).</p>
+                                    <button class="bet-button" onclick="simulateGameLaunch({ name: 'Apuesta Juego de Pelota: Este vs Oeste', description: 'Simulación de apuesta. La función completa requiere suscripción.', imageUrl: 'https://via.placeholder.com/600x360/569CD6/FFFFFF?text=Juego+de+Pelota' })">Apostar <i class="fas fa-coins"></i></button>
+                                </div>
+                            </article>
+                            </div>
+                    </section>
+
+                    <section id="bingo">
+                        <h2><i class="fas fa-border-all"></i> Bingo Sagrado</h2>
+                         <h3><i class="fas fa-star"></i> Salas Populares y Keno del Servidor</h3>
+                        <div class="bingo-grid" id="bingo-grid-container">
+                            <p>Cargando salas de bingo...</p>
+                            </div>
+                    </section>
+
+                    <section id="promotions">
+                        <h2><i class="fas fa-gifts"></i> Ofrendas de los Dioses</h2>
+                         <h3><i class="fas fa-calendar-alt"></i> Bonos Actuales y Recompensas</h3>
+                        <div class="promo-grid" id="promotions-grid-container">
+                            <p>Cargando promociones...</p>
+                            </div>
+                    </section>
+
+                 </div>
+            </main>
+
+            <footer>
+                 <div class="container">
+                     <div class="footer-logo">
+                         <a href="#home" class="logo scroll-link">Gran Aztlán <i class="fas fa-sun"></i></a>
+                     </div>
+                      <div class="footer-links">
+                          <a href="#">Leyes (Términos)</a> |
+                          <a href="#">Secreto (Privacidad)</a> |
+                          <a href="#">Juego Sagrado (Responsable)</a> |
+                          <a href="#">Mensajero (Contacto)</a>
+                      </div>
+                     <div class="social-media">
+                         <a href="#" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                         <a href="#" aria-label="Twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
+                         <a href="#" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+                         <a href="#" aria-label="Youtube" title="Youtube"><i class="fab fa-youtube"></i></a>
+                     </div>
+                     <div class="copyright">
+                         &copy; Año 1-Tekpatl (<span id="current-year">2025</span>) Gran Aztlán. Derechos reservados. Creado para entretenimiento. Juego Responsable. 18+ (Simulado).
+                     </div>
+                 </div>
+            </footer>
+
+        </div> </div> <div id="game-status-area"></div>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('loginModal')">&times;</span>
+            <h2><i class="fas fa-sign-in-alt"></i> Entrar al Templo</h2>
+            <p>Identifícate como guerrero registrado:</p>
+            <form id="login-form">
+                <label for="login-user">Nombre de Guerrero:</label>
+                <input type="text" id="login-user" name="login-user" placeholder="Ej: Cuauhtemoc" required>
+                <label for="login-pass">Contraseña Sagrada:</label>
+                <input type="password" id="login-pass" name="login-pass" placeholder="••••••••" required>
+                <button type="submit" class="cta-button">Acceder</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('registerModal')">&times;</span>
+            <h2><i class="fas fa-user-plus"></i> Unirse al Clan</h2>
+            <p>Regístrate para acceder a la versión Lite o suscríbete para la experiencia completa:</p>
+            <form id="register-form">
+                <label for="reg-user">Tu Nombre de Guerrero:</label>
+                <input type="text" id="reg-user" name="reg-user" placeholder="Elige tu nombre" required>
+                <label for="reg-email">Correo (Paloma Mensajera):</label>
+                <input type="email" id="reg-email" name="reg-email" placeholder="tu.correo@ejemplo.com" required>
+                <label for="reg-pass">Contraseña Sagrada:</label>
+                <input type="password" id="reg-pass" name="reg-pass" placeholder="Crea tu clave secreta" required>
+                <button type="submit" class="cta-button">Crear Cuenta (Acceso Lite)</button>
+            </form>
+             <p style="margin-top: 1.5rem; font-size: 0.9em;">Puedes suscribirte después desde la sección <a href="#subscriptions" onclick="closeModal('registerModal'); document.getElementById('subscriptions').scrollIntoView({behavior: 'smooth'});">Suscripciones</a>.</p>
+        </div>
+    </div>
+
+    <div id="gameSimulationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('gameSimulationModal')">&times;</span>
+            <h2 id="simulationGameName"><i class="fas fa-spinner fa-spin"></i> Cargando Juego</h2>
+            <p id="simulationGameDescription">Estás iniciando una simulación de...</p>
+            <img id="simulationGameImage" src="https://via.placeholder.com/400x240/1E1E1E/D4D4D4?text=Cargando..." alt="Simulación de Juego">
+            <div id="simulationGameResult" style="display: none;"></div> <div class="modal-actions">
+                <button onclick="closeModal('gameSimulationModal')">Cerrar Simulación</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="liteGameModal" class="modal">
+      <div class="modal-content game-modal-content">
+          <span class="close-button" onclick="closeModal('liteGameModal')">&times;</span>
+          <h2 id="liteGameTitle"><i class="fas fa-dice"></i> Juego Lite</h2>
+          <div class="lite-game-header">
+              <div id="liteGameInfo">
+                  <span id="liteGameBalance">Saldo Lite: 100</span> |
+                  <span id="liteGameBetInfo">Apuesta: 5</span>
+              </div>
+          </div>
+          <hr style="margin: 1.5rem 0; border-color: var(--border-color);">
+
+          <div id="liteGameContent">
+              </div>
+
+          <div id="liteGameResult"></div>
+
+          <div class="modal-actions">
+              <button id="liteGameActionBtn" class="cta-button">Jugar</button>
+              <button onclick="closeModal('liteGameModal')">Cerrar Juego</button>
+          </div>
+
+          <p class="info-text">
+              <strong>Atención:</strong> Este es un juego 'Lite' solo por diversión, usando un saldo virtual temporal.
+          </p>
+      </div>
+    </div>
+
+
+    <div id="welcomeModal" class="modal" style="display: none;"> <div class="modal-content">
+             <h2><i class="fas fa-door-open"></i> ¡Bienvenido a Gran Aztlán!</h2>
+             <p id="welcomeMessage">Ometéotl, el dios dual, percibe tu presencia. Para disfrutar de la gloria completa de Aztlán y sus tesoros, considera unirte a nuestro clan con una suscripción.</p>
+             <p><strong>Actualmente estás navegando en modo Lite.</strong></p>
+             <div class="modal-actions">
+                  <button class="go-subscribe-btn" onclick="closeModal('welcomeModal'); document.getElementById('subscriptions').scrollIntoView({behavior: 'smooth'});">
+                      Ver Planes de Suscripción <i class="fas fa-crown"></i>
+                  </button>
+                  <button class="close-welcome-btn" onclick="closeModal('welcomeModal')">
+                      Continuar en Modo Lite <i class="fas fa-times"></i>
+                  </button>
+             </div>
+         </div>
+       </div>
+
+
+    <script>
+        const API_BASE_URL = 'http://127.0.0.1:5000'; // O la URL donde corra tu backend Flask
+
+        // Variables globales para estado del usuario
+        let currentUser = null; // Almacenará { username, balance, is_subscribed, tier }
+        let authToken = localStorage.getItem('authToken');
+
+        // Elementos del DOM
+        const statusArea = document.getElementById('game-status-area');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const mainContent = document.querySelector('.main-content-area');
+        const userActionsContainer = document.getElementById('user-actions-container');
+        const welcomeModal = document.getElementById('welcomeModal');
+        let statusTimeout;
+        let liteGameContext = {}; // Para el estado de los juegos lite (saldo, apuesta, etc.)
+
+        // --- Funciones de Utilidad (showStatus, hideStatus, openModal, closeModal) ---
+        function showStatus(message, isLoading = false, duration = 4000) {
+             clearTimeout(statusTimeout);
+             if (!statusArea) return;
+             statusArea.textContent = message;
+             let statusClass = 'visible';
+             statusArea.classList.remove('loading', 'error'); // Limpiar clases anteriores
+             if (isLoading) {
+                 statusClass += ' loading';
+                 statusArea.style.backgroundColor = "var(--vscode-keyword)"; // Azul para cargando
+             } else if (message.toLowerCase().includes("error") || message.toLowerCase().includes("falló") || message.toLowerCase().includes("insuficiente")) {
+                 statusClass += ' error';
+                 statusArea.style.backgroundColor = "var(--aztec-red-dark)"; // Rojo para errores
+             } else {
+                 statusArea.style.backgroundColor = "var(--vscode-comment)"; // Verde para éxito/info
+             }
+             // Aplicar clase después de un pequeño retraso para asegurar la transición
+             requestAnimationFrame(() => {
+                  statusArea.className = statusClass;
+             });
+
+             if (!isLoading && duration > 0) {
+                 statusTimeout = setTimeout(() => {
+                     if (statusArea) {
+                         statusArea.classList.remove('visible');
+                         // Opcional: resetear color al ocultar
+                         // statusArea.style.backgroundColor = "var(--vscode-comment)";
+                     }
+                 }, duration);
+             }
+         }
+        function hideStatus() { clearTimeout(statusTimeout); if(statusArea) statusArea.classList.remove('visible'); }
+        function openModal(modalId) { const modal = document.getElementById(modalId); if(modal) modal.style.display = "block"; }
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if(modal) modal.style.display = "none";
+            // Limpiar contexto si se cierra el modal de juego lite
+            if (modalId === 'liteGameModal') liteGameContext = {};
+        }
+        // Cerrar modal al hacer click fuera (excepto welcomeModal)
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal') && event.target.id !== 'welcomeModal') {
+                 closeModal(event.target.id);
+            }
+        }
+
+        // --- Funciones de Autenticación y Perfil ---
+        async function handleLogin(event) {
+            event.preventDefault();
+            const form = event.target;
+            const username = form.querySelector('#login-user')?.value;
+            const password = form.querySelector('#login-pass')?.value;
+            if (!username || !password) return;
+            showStatus('Iniciando sesión...', true);
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password }),
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    authToken = data.token;
+                    localStorage.setItem('authToken', authToken);
+                    currentUser = data.user; // Guardar datos del usuario globalmente
+                    updateUIAfterLogin(); // Actualizar UI con datos de currentUser
+                    closeModal('loginModal');
+                    showStatus(`¡Bienvenido de vuelta, Guerrero ${currentUser.username}!`, false, 5000);
+                    // No mostramos modal de bienvenida al hacer login, asumimos que ya lo vio o está suscrito
+                    updateGameCardsAvailability(); // Habilitar/deshabilitar juegos según suscripción
+                } else {
+                    showStatus(`Error: ${data.message || 'Credenciales inválidas'}`, false, 5000);
+                    localStorage.removeItem('authToken'); // Asegurar limpieza si falla login
+                    authToken = null;
+                    currentUser = null;
+                }
+            } catch (error) {
+                showStatus('Error de conexión al servidor. Intenta de nuevo.', false, 6000);
+                console.error('Error de red en login:', error);
+                 localStorage.removeItem('authToken'); authToken = null; currentUser = null;
+            } finally {
+                // hideStatus(); // No ocultar inmediatamente para que se vean los mensajes de error/éxito
+            }
+        }
+        async function handleRegister(event) {
+             event.preventDefault();
+             const form = event.target;
+             const username = form.querySelector('#reg-user')?.value;
+             const email = form.querySelector('#reg-email')?.value;
+             const password = form.querySelector('#reg-pass')?.value;
+             if (!username || !email || !password) return;
+             showStatus('Creando cuenta...', true);
+             try {
+                 const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
+                     method: 'POST', headers: { 'Content-Type': 'application/json' },
+                     body: JSON.stringify({ username, email, password }),
+                 });
+                 const data = await response.json();
+                 if (response.ok || response.status === 201) {
+                     showStatus('¡Registro exitoso! Ahora puedes iniciar sesión.', false, 6000);
+                     closeModal('registerModal');
+                     openModal('loginModal'); // Abrir modal de login después de registrar
+                 } else {
+                     showStatus(`Error de registro: ${data.message || 'No se pudo registrar'}`, false, 5000);
+                 }
+             } catch (error) {
+                 showStatus('Error de conexión al servidor.', false, 6000);
+                 console.error('Error de red en registro:', error);
+             } finally {
+                // hideStatus();
+             }
+         }
+        async function handleLogout() {
+            showStatus('Cerrando sesión...', true, 1500); // Mensaje corto
+            localStorage.removeItem('authToken');
+            authToken = null;
+            currentUser = null;
+            updateUIAfterLogout(); // Actualiza la UI a estado "no logueado"
+            showStatus('Sesión cerrada. Vuelves al modo Lite.', false, 4000);
+            showWelcomeModalIfNeeded(); // Mostrar modal de bienvenida si aplica
+             updateGameCardsAvailability(); // Deshabilitar juegos premium
+        }
+        function updateUIAfterLogin() {
+            if (!userActionsContainer || !currentUser) return;
+            userActionsContainer.innerHTML = ''; // Limpiar
+
+            // Mostrar Saldo (Usar virtual_balance si existe)
+            const balanceSpan = document.createElement('span');
+            balanceSpan.innerHTML = `Tributo: ${currentUser.virtual_balance ?? '---'} <i class="fas fa-gem"></i>`;
+            userActionsContainer.appendChild(balanceSpan);
+
+            // Mostrar Estado de Suscripción
+            const subStatusSpan = document.createElement('span');
+            subStatusSpan.classList.add('subscription-status');
+            if (currentUser.is_subscribed && currentUser.subscription_tier) {
+                subStatusSpan.innerHTML = `<i class="fas fa-crown"></i> Plan ${currentUser.subscription_tier}`;
+            } else {
+                subStatusSpan.innerHTML = `<i class="fas fa-times-circle"></i> Modo Lite`;
+                subStatusSpan.classList.add('not-subscribed');
+            }
+            userActionsContainer.appendChild(subStatusSpan);
+
+            // Mostrar Mensaje Bienvenida
+            const welcomeMsg = document.createElement('span');
+            welcomeMsg.textContent = `Hola, ${currentUser.username}`;
+            welcomeMsg.style.margin = '0 0.5rem'; // Ajustar margen
+            welcomeMsg.style.fontWeight = 'normal'; // Estilo menos prominente
+            userActionsContainer.appendChild(welcomeMsg);
+
+            // Mostrar Botón Logout
+            const logoutBtn = document.createElement('button');
+            logoutBtn.textContent = 'Salir';
+            logoutBtn.onclick = handleLogout;
+            logoutBtn.className = 'logout-button'; // Clase para estilo diferente
+            userActionsContainer.appendChild(logoutBtn);
+        }
+        function updateUIAfterLogout() {
+            if (!userActionsContainer) return;
+            userActionsContainer.innerHTML = ''; // Limpiar
+            // Mostrar Saldo por defecto
+            const balanceSpan = document.createElement('span');
+            balanceSpan.innerHTML = `Tributo: <i class="fas fa-gem"></i> ---`;
+            userActionsContainer.appendChild(balanceSpan);
+            // Mostrar botones Login/Registro
+            const loginBtn = document.createElement('button');
+            loginBtn.id = 'login-btn'; loginBtn.textContent = 'Entrar';
+            loginBtn.onclick = () => openModal('loginModal');
+            userActionsContainer.appendChild(loginBtn);
+            const registerBtn = document.createElement('button');
+            registerBtn.id = 'register-btn'; registerBtn.textContent = 'Unirse';
+            registerBtn.onclick = () => openModal('registerModal');
+            userActionsContainer.appendChild(registerBtn);
+        }
+        async function fetchUserProfile() {
+             // Intenta obtener el perfil si hay un token guardado
+             if (!authToken) {
+                 updateUIAfterLogout();
+                 showWelcomeModalIfNeeded(); // Mostrar modal si no hay token
+                 updateGameCardsAvailability(); // Asegurar juegos deshabilitados
+                 return;
+             }
+             // No mostrar 'Verificando sesión' para no ser intrusivo
+             // showStatus("Verificando sesión...", true, 1500);
+             try {
+                 const response = await fetch(`${API_BASE_URL}/api/user/profile`, {
+                     headers: { 'Authorization': `Bearer ${authToken}` }
+                 });
+                 if (response.ok) {
+                     currentUser = await response.json();
+                     updateUIAfterLogin();
+                     // No mostramos modal de bienvenida si ya está logueado y verificado
+                 } else { // Token inválido o expirado
+                     localStorage.removeItem('authToken'); authToken = null; currentUser = null;
+                     updateUIAfterLogout();
+                     showWelcomeModalIfNeeded(); // Mostrar modal si el token falló
+                 }
+             } catch (error) {
+                 console.error("Error al obtener perfil:", error);
+                 localStorage.removeItem('authToken'); authToken = null; currentUser = null;
+                 updateUIAfterLogout();
+                 showStatus('Error conectando al servidor.', false, 5000);
+                 showWelcomeModalIfNeeded(); // Mostrar modal si hay error de red
+             } finally {
+                  updateGameCardsAvailability(); // Habilitar/deshabilitar juegos al terminar
+             }
+         }
+
+        // --- Funciones de Carga de Juegos ---
+        async function loadGames() {
+             // No mostrar "Cargando catálogo" para que sea más fluido
+             // showStatus("Cargando catálogo de juegos...", true);
+             try {
+                 const response = await fetch(`${API_BASE_URL}/api/games?category=all`); // Pedir todos
+                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                 const allGames = await response.json();
+
+                 // Limpiar contenedores existentes y añadir mensaje de carga si está vacío
+                 const containers = {
+                    'table': document.getElementById('table-games-grid-container'),
+                    'live': document.getElementById('live-casino-grid-container'),
+                    'bingo': document.getElementById('bingo-grid-container'),
+                    'promotions': document.getElementById('promotions-grid-container')
+                    // 'sports' se llena estáticamente ahora
+                 };
+
+                 Object.values(containers).forEach(container => {
+                    if(container) {
+                        container.innerHTML = '<p>Cargando...</p>'; // Mensaje mientras se procesa
+                    }
+                 });
+
+                 if (!allGames || allGames.length === 0) {
+                     Object.values(containers).forEach(container => {
+                         if(container) container.innerHTML = '<p>No hay juegos disponibles.</p>';
+                     });
+                     // showStatus("No hay juegos disponibles en este momento.", false); // Mensaje en status
+                     return;
+                 }
+
+                 // Limpiar mensajes de carga antes de añadir tarjetas
+                 Object.values(containers).forEach(container => {
+                    if(container) container.innerHTML = '';
+                 });
+
+
+                 // Distribuir juegos en sus contenedores
+                 allGames.forEach(game => {
+                     const containerIdMap = {
+                         'table': 'table-games-grid-container',
+                         'live': 'live-casino-grid-container',
+                         'bingo': 'bingo-grid-container',
+                         'promotions': 'promotions-grid-container'
+                         // 'slots' y 'sports' no se cargan dinámicamente aquí
+                     };
+                     const containerId = containerIdMap[game.category];
+                     const container = document.getElementById(containerId);
+                     if (container) {
+                         container.appendChild(createGameCard(game));
+                     } else if (game.category !== 'sports' && game.category !== 'slots') { // No mostrar warning para sports/slots
+                         console.warn(`Contenedor no encontrado para categoría: ${game.category}`);
+                     }
+                 });
+                // hideStatus(); // Ocultar "cargando" general
+                 updateGameCardsAvailability(); // Ajustar disponibilidad inicial
+
+             } catch (error) {
+                 showStatus('Error al cargar juegos. Intenta recargar.', false);
+                 console.error(`Error cargando juegos:`, error);
+                 // Poner mensaje de error en los contenedores
+                  const containers = [
+                    document.getElementById('table-games-grid-container'),
+                    document.getElementById('live-casino-grid-container'),
+                    document.getElementById('bingo-grid-container'),
+                    document.getElementById('promotions-grid-container')
+                 ];
+                 containers.forEach(container => {
+                    if(container) container.innerHTML = '<p>Error al cargar juegos.</p>';
+                 });
+             }
+         }
+        function createGameCard(game) {
+             // Determinar la clase de la tarjeta y el icono del botón según la categoría
+            let cardClass = 'game-card'; // Default
+            let buttonIconClass = 'fas fa-play-circle'; // Default
+            let buttonText = 'Jugar Sim'; // Default
+            let buttonClass = 'play-button'; // Default
+
+            switch (game.category) {
+                case 'table':
+                    cardClass = 'game-card'; // Mantener game-card para estilos generales
+                    buttonIconClass = 'fas fa-dice-d20';
+                    buttonText = 'Jugar Ahora';
+                    break;
+                case 'live':
+                    cardClass = 'game-card'; // Podría ser 'live-card' si necesitas estilos específicos
+                    buttonIconClass = 'fas fa-broadcast-tower';
+                    buttonText = 'Entrar Sala';
+                    break;
+                case 'bingo':
+                    cardClass = 'bingo-card';
+                    buttonIconClass = 'fas fa-border-all';
+                    buttonText = 'Jugar Bingo';
+                    break;
+                case 'promotions':
+                    cardClass = 'promo-card';
+                    buttonIconClass = 'fas fa-gift';
+                    buttonText = 'Ver Ofrenda';
+                    buttonClass = 'details-button';
+                    break;
+                // No necesitamos 'sports' aquí ya que se crean estáticamente
+            }
+
+            const article = document.createElement('article');
+            article.className = cardClass; // Usar la clase determinada
+            article.dataset.gameType = game.type; // Guardar tipo de juego (lite, backend, frontend sim)
+            article.dataset.gameId = game.id; // Guardar ID
+            article.dataset.liteGameType = game.liteGameType || ''; // Guardar tipo específico para juegos Lite
+
+
+            const imageDiv = document.createElement('div'); imageDiv.className = 'card-image';
+            const img = document.createElement('img');
+            img.src = game.imageUrl || 'https://via.placeholder.com/600x360/1E1E1E/D4D4D4?text=Aztlan';
+            img.alt = game.name || 'Juego Azteca'; img.loading = 'lazy';
+            imageDiv.appendChild(img);
+
+            const contentDiv = document.createElement('div'); contentDiv.className = 'card-content';
+            const title = document.createElement('h3'); title.textContent = game.name || 'Juego Azteca';
+            const description = document.createElement('p'); description.textContent = game.description || 'Una aventura emocionante te espera.';
+            const button = document.createElement('button');
+            button.className = buttonClass; // Clase base del botón
+
+            // Lógica del botón actualizada
+            if (game.category === 'promotions') {
+                button.innerHTML = `${buttonText} <i class="${buttonIconClass}"></i>`;
+                button.onclick = () => openPromotionDetails(game);
+            } else if (game.type === 'lite_frontend') {
+                button.innerHTML = `Jugar Lite <i class="fas fa-star"></i>`; // Icono Lite
+                button.onclick = () => openLiteGame(game.liteGameType || game.id, game); // Pasar game completo
+            } else if (game.type === 'simulated_backend') {
+                button.innerHTML = `${buttonText} <i class="fas fa-server"></i>`; // Icono servidor
+                button.onclick = () => playGameBackend(game); // Llama a la API del backend
+            } else { // Default: simulated_frontend
+                 button.innerHTML = `${buttonText} <i class="${buttonIconClass}"></i>`;
+                button.onclick = () => simulateGameLaunch(game); // Simulación visual frontend
+            }
+
+
+            contentDiv.appendChild(title); contentDiv.appendChild(description); contentDiv.appendChild(button);
+            article.appendChild(imageDiv); article.appendChild(contentDiv);
+            return article;
+         }
+
+        // --- Funciones de Juego ---
+        function simulateGameLaunch(game) { // Simulación VISUAL frontend (para juegos no interactivos o apuestas)
+             showStatus(`Invocando simulación de "${game.name}"...`, true, 1000); // Mensaje corto
+             const modal = document.getElementById('gameSimulationModal');
+             const titleElement = document.getElementById('simulationGameName');
+             const imageElement = document.getElementById('simulationGameImage');
+             const descriptionElement = document.getElementById('simulationGameDescription'); // Nuevo
+             const resultElement = document.getElementById('simulationGameResult'); // Nuevo
+
+             if (modal && titleElement && imageElement && descriptionElement && resultElement) {
+                 titleElement.innerHTML = `<i class="fas fa-cog fa-spin"></i> ${game.name || 'Juego Desconocido'}`;
+                 imageElement.src = game.imageUrl || 'https://via.placeholder.com/400x240/1E1E1E/D4D4D4?text=Aztlan';
+                 imageElement.alt = `Simulación de ${game.name || 'Juego Azteca'}`;
+                 descriptionElement.textContent = game.description || 'Observa la simulación.';
+                 resultElement.style.display = 'none'; // Ocultar resultado por defecto
+                 resultElement.textContent = '';
+
+                 // Abrir modal un poco después para que se vea el "cargando"
+                 setTimeout(() => {
+                     hideStatus(); // Ocultar "invocando"
+                     titleElement.innerHTML = `<i class="fas fa-dice-d20"></i> ${game.name || 'Juego Azteca'}`;
+                     openModal('gameSimulationModal');
+                 }, 500); // 500ms delay
+             } else { hideStatus(); alert(`Iniciando simulación para: ${game.name || 'Juego Azteca'}`); }
+         }
+        async function playGameBackend(game) { // Llama a la API del backend para JUGAR (requiere suscripción)
+             if (!currentUser || !currentUser.is_subscribed) {
+                  showStatus("Necesitas una suscripción activa para jugar a este juego.", false, 5000);
+                 // Opcional: abrir modal de suscripción o scroll a la sección
+                 document.getElementById('subscriptions')?.scrollIntoView({ behavior: 'smooth' });
+                 return;
+             }
+
+             showStatus(`Conectando con el servidor para jugar a "${game.name}"...`, true);
+             const modal = document.getElementById('gameSimulationModal');
+             const titleElement = document.getElementById('simulationGameName');
+             const imageElement = document.getElementById('simulationGameImage');
+             const descriptionElement = document.getElementById('simulationGameDescription');
+             const resultElement = document.getElementById('simulationGameResult');
+
+             // Preparar el modal de simulación para mostrar el resultado del backend
+             if (modal && titleElement && imageElement && descriptionElement && resultElement) {
+                  titleElement.innerHTML = `<i class="fas fa-server"></i> ${game.name || 'Juego del Servidor'}`;
+                  imageElement.src = game.imageUrl || 'https://via.placeholder.com/400x240/1E1E1E/D4D4D4?text=Aztlan';
+                  imageElement.alt = `Jugando a ${game.name || 'Juego Azteca'}`;
+                  descriptionElement.textContent = `Esperando resultado del servidor para ${game.name}...`;
+                  resultElement.textContent = 'Procesando...';
+                  resultElement.style.display = 'block'; // Mostrar área de resultado
+                  openModal('gameSimulationModal'); // Abrir modal antes de la llamada API
+             } else {
+                  showStatus("Error al preparar la interfaz del juego.", false); return;
+             }
+
+             try {
+                 const response = await fetch(`${API_BASE_URL}/api/play/${game.id}`, {
+                     method: 'POST',
+                     headers: {
+                         'Content-Type': 'application/json',
+                         'Authorization': `Bearer ${authToken}` // Enviar token para autorización
+                     },
+                     // body: JSON.stringify({ bet: amount }) // Podrías enviar apuesta si es necesario
+                 });
+
+                 const data = await response.json();
+
+                 if (response.ok && data.success) {
+                     showStatus(`Resultado de ${game.name} recibido.`, false, 5000);
+                     if(resultElement) resultElement.textContent = data.message; // Mostrar mensaje del backend
+                     // Opcional: Refrescar perfil si el juego afectó el saldo
+                     if(data.user) { // Si el backend devuelve el usuario actualizado
+                         currentUser = data.user;
+                         updateUIAfterLogin(); // Actualiza el header
+                     } else {
+                         fetchUserProfile(); // Si no, volver a pedir perfil completo
+                     }
+                 } else {
+                     showStatus(`Error al jugar ${game.name}: ${data.message || 'Respuesta inválida del servidor'}`, false, 6000);
+                      if(resultElement) resultElement.textContent = `Error: ${data.message || 'No se pudo obtener resultado.'}`;
+                 }
+
+             } catch (error) {
+                 showStatus('Error de conexión al servidor del juego.', false, 6000);
+                 console.error(`Error jugando ${game.id}:`, error);
+                 if(resultElement) resultElement.textContent = 'Error de conexión.';
+             } finally {
+                 hideStatus(); // Ocultar "conectando"
+             }
+         }
+
+        // --- Funciones para Juegos Lite ---
+
+        function openLiteGame(gameType, gameData) {
+            const modal = document.getElementById('liteGameModal');
+            const contentEl = document.getElementById('liteGameContent');
+            const titleEl = document.getElementById('liteGameTitle');
+            const balanceEl = document.getElementById('liteGameBalance');
+            const betInfoEl = document.getElementById('liteGameBetInfo');
+            const resultEl = document.getElementById('liteGameResult');
+            const actionBtn = document.getElementById('liteGameActionBtn');
+
+            if (!modal || !contentEl || !titleEl || !balanceEl || !betInfoEl || !resultEl || !actionBtn) {
+                console.error("Error: Elementos del modal Lite no encontrados.");
+                return;
+            }
+
+            // Resetear estado anterior
+            contentEl.innerHTML = '';
+            resultEl.textContent = '¡Haz tu jugada!';
+            resultEl.style.color = 'var(--gold-primary)'; // Reset color
+            actionBtn.disabled = false; // Habilitar botón
+
+            // Configuración inicial del contexto del juego Lite
+            liteGameContext = {
+                saldo: 100, // Saldo inicial Lite
+                apuesta: 5,  // Apuesta fija Lite
+                gameType: gameType,
+                isRolling: false // Para evitar clics múltiples en dados
+            };
+
+            // Actualizar UI con info inicial
+            balanceEl.textContent = `Saldo Lite: ${liteGameContext.saldo}`;
+            betInfoEl.textContent = `Apuesta: ${liteGameContext.apuesta}`;
+            titleEl.innerHTML = `<i class="fas fa-star"></i> ${gameData.name || 'Juego Lite'}`;
+
+            // --- Configuración específica por tipo de juego Lite ---
+            if (gameType === 'dados') { // Si liteGameType es 'dados'
+                 titleEl.innerHTML = `<i class="fas fa-dice"></i> ${gameData.name || 'Dados Lite'}`;
+                 actionBtn.textContent = 'Lanzar Dados';
+                 actionBtn.onclick = lanzarDadosLite;
+
+                // Crear estructura HTML para los dados
+                contentEl.innerHTML = `
+                    <div class="dado-container">
+                        <div id="dado1" class="dado"></div>
+                        <div id="dado2" class="dado"></div>
+                    </div>
+                    <p id="liteGameSum" style="margin-top: 1rem; font-weight: bold;"></p> `;
+                 // Mostrar dados iniciales (ej. cara 1)
+                mostrarDadoLite("dado1", 1);
+                mostrarDadoLite("dado2", 1);
+
+            } else if (gameType === 'slots-lite') { // Ejemplo si tuvieras slots lite
+                 titleEl.innerHTML = `<i class="fas fa-layer-group"></i> ${gameData.name || 'Slots Lite'}`;
+                 actionBtn.textContent = 'Girar Rodillos';
+                 actionBtn.onclick = girarSlotsLite; // Necesitarías crear esta función
+
+                 contentEl.innerHTML = `
+                     <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem;">
+                         <div class="lite-slot-reel" id="reel1">❓</div>
+                         <div class="lite-slot-reel" id="reel2">❓</div>
+                         <div class="lite-slot-reel" id="reel3">❓</div>
+                     </div>
+                 `;
+            } else {
+                // Juego Lite desconocido
+                console.error(`Tipo de juego Lite desconocido: ${gameType}`);
+                contentEl.innerHTML = '<p>Error al cargar el juego Lite.</p>';
+                actionBtn.disabled = true;
+            }
+
+            openModal('liteGameModal');
+        }
+
+        // --- Lógica específica para Dados Lite ---
+        function lanzarDadosLite() {
+            const resultEl = document.getElementById('liteGameResult');
+            const sumEl = document.getElementById('liteGameSum');
+            const balanceEl = document.getElementById('liteGameBalance');
+            const actionBtn = document.getElementById('liteGameActionBtn');
+
+            if (!resultEl || !sumEl || !balanceEl || !actionBtn || !liteGameContext || liteGameContext.isRolling) {
+                return; // Salir si faltan elementos o ya está lanzando
+            }
+
+            if (liteGameContext.saldo < liteGameContext.apuesta) {
+                showStatus("Saldo Lite insuficiente.", false, 3000);
+                resultEl.textContent = "¡Saldo insuficiente!";
+                resultEl.style.color = 'var(--aztec-red-dark)';
+                actionBtn.disabled = true; // Deshabilitar si no hay saldo
+                return;
+            }
+
+            liteGameContext.isRolling = true; // Bloquear botón
+            actionBtn.disabled = true;
+            resultEl.textContent = "Lanzando...";
+            sumEl.textContent = ""; // Limpiar suma anterior
+            resultEl.style.color = 'var(--text-secondary)'; // Color neutro
+
+            // Añadir clase para animación (opcional)
+            document.getElementById('dado1')?.classList.add('rolling');
+            document.getElementById('dado2')?.classList.add('rolling');
+
+            // Simular espera del lanzamiento
+            setTimeout(() => {
+                let dado1 = Math.floor(Math.random() * 6) + 1;
+                let dado2 = Math.floor(Math.random() * 6) + 1;
+                let suma = dado1 + dado2;
+
+                // Quitar clase de animación
+                document.getElementById('dado1')?.classList.remove('rolling');
+                document.getElementById('dado2')?.classList.remove('rolling');
+
+
+                mostrarDadoLite("dado1", dado1);
+                mostrarDadoLite("dado2", dado2);
+
+                sumEl.textContent = "Suma: " + suma;
+
+                if (suma === 7 || suma === 11) {
+                    resultEl.textContent = "¡Ganaste el doble!";
+                    resultEl.style.color = 'var(--gold-primary)';
+                    liteGameContext.saldo += liteGameContext.apuesta * 2; // Gana el doble de la apuesta
+                } else if (suma === 2 || suma === 3 || suma === 12) {
+                     resultEl.textContent = "Perdiste...";
+                     resultEl.style.color = 'var(--aztec-red-dark)';
+                    liteGameContext.saldo -= liteGameContext.apuesta;
+                }
+                 else { // Otros resultados (4, 5, 6, 8, 9, 10) podrían ser punto o seguir jugando en Craps real, aquí simplemente pierde
+                    resultEl.textContent = "Perdiste.";
+                    resultEl.style.color = 'var(--aztec-red-dark)';
+                    liteGameContext.saldo -= liteGameContext.apuesta;
+                }
+
+
+                balanceEl.textContent = "Saldo Lite: " + liteGameContext.saldo;
+                liteGameContext.isRolling = false; // Desbloquear botón
+                actionBtn.disabled = liteGameContext.saldo < liteGameContext.apuesta; // Habilitar/deshabilitar según saldo
+
+            }, 600); // Tiempo de espera para la animación/lanzamiento
+        }
+
+        function mostrarDadoLite(dadoId, valor) {
+            let dado = document.getElementById(dadoId);
+            if (!dado) return;
+            dado.innerHTML = ""; // Limpiar puntos anteriores
+
+            // Posiciones de los puntos (aproximadas para un dado de 100x100)
+            // [x%, y%] relativo al contenedor del dado
+            const posiciones = {
+                 1: [[50, 50]],
+                 2: [[25, 25], [75, 75]],
+                 3: [[25, 25], [50, 50], [75, 75]],
+                 4: [[25, 25], [75, 25], [25, 75], [75, 75]],
+                 5: [[25, 25], [75, 25], [50, 50], [25, 75], [75, 75]],
+                 6: [[25, 25], [75, 25], [25, 50], [75, 50], [25, 75], [75, 75]]
+            };
+
+
+            if (posiciones[valor]) {
+                posiciones[valor].forEach(pos => {
+                    crearPuntoLite(dado, pos[0], pos[1]);
+                });
+            }
+        }
+
+        function crearPuntoLite(dadoContainer, xPercent, yPercent) {
+            let punto = document.createElement("div");
+            punto.className = "punto"; // Usar la clase .punto definida en CSS
+            // Establecer posición usando porcentajes
+            punto.style.left = xPercent + "%";
+            punto.style.top = yPercent + "%";
+            dadoContainer.appendChild(punto);
+        }
+
+        // --- Función para Slots Lite (Ejemplo básico) ---
+         function girarSlotsLite() {
+            const reel1 = document.getElementById('reel1');
+            const reel2 = document.getElementById('reel2');
+            const reel3 = document.getElementById('reel3');
+            const resultEl = document.getElementById('liteGameResult');
+            const balanceEl = document.getElementById('liteGameBalance');
+            const actionBtn = document.getElementById('liteGameActionBtn');
+
+            if (!reel1 || !reel2 || !reel3 || !resultEl || !balanceEl || !actionBtn || !liteGameContext) return;
+
+            if (liteGameContext.saldo < liteGameContext.apuesta) {
+                 showStatus("Saldo Lite insuficiente.", false, 3000);
+                resultEl.textContent = "¡Saldo insuficiente!";
+                 resultEl.style.color = 'var(--aztec-red-dark)';
+                 actionBtn.disabled = true;
+                 return;
+            }
+
+            actionBtn.disabled = true;
+            resultEl.textContent = "Girando...";
+            resultEl.style.color = 'var(--text-secondary)';
+
+            liteGameContext.saldo -= liteGameContext.apuesta; // Cobrar apuesta al inicio
+            balanceEl.textContent = `Saldo Lite: ${liteGameContext.saldo}`;
+
+
+            const symbols = ['🍒', '🍋', '🍊', '🔔', '💎', '👑']; // Símbolos posibles
+            let spinInterval1, spinInterval2, spinInterval3;
+            let spins = 0;
+            const maxSpins = 15 + Math.floor(Math.random() * 10); // Girar un número variable de veces
+
+            const spinReel = (reel) => {
+                return setInterval(() => {
+                    reel.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                }, 100); // Velocidad de giro
+            };
+
+            spinInterval1 = spinReel(reel1);
+            spinInterval2 = spinReel(reel2);
+            spinInterval3 = spinReel(reel3);
+
+            // Detener los rodillos después de un tiempo
+             setTimeout(() => clearInterval(spinInterval1), 1000 + Math.random() * 300);
+             setTimeout(() => clearInterval(spinInterval2), 1300 + Math.random() * 400);
+             setTimeout(() => {
+                clearInterval(spinInterval3);
+                // Asignar resultado final
+                const final1 = symbols[Math.floor(Math.random() * symbols.length)];
+                const final2 = symbols[Math.floor(Math.random() * symbols.length)];
+                const final3 = symbols[Math.floor(Math.random() * symbols.length)];
+                reel1.textContent = final1;
+                reel2.textContent = final2;
+                reel3.textContent = final3;
+
+                // Calcular resultado
+                let winAmount = 0;
+                if (final1 === final2 && final2 === final3) { // Tres iguales
+                    winAmount = liteGameContext.apuesta * 10; // Premio mayor
+                    resultEl.textContent = `¡Jackpot! Ganaste ${winAmount}`;
+                     resultEl.style.color = 'var(--gold-primary)';
+                } else if (final1 === final2 || final2 === final3 || final1 === final3) { // Dos iguales
+                    winAmount = liteGameContext.apuesta * 2;
+                    resultEl.textContent = `¡Ganaste ${winAmount}!`;
+                    resultEl.style.color = 'var(--vscode-comment)';
+                } else if ([final1, final2, final3].includes('🍒')) { // Al menos una cereza (premio pequeño)
+                     winAmount = Math.ceil(liteGameContext.apuesta * 0.5); // Mitad de la apuesta
+                     resultEl.textContent = `🍒 ¡Premio! Ganaste ${winAmount}`;
+                      resultEl.style.color = 'var(--vscode-comment)';
+                 }
+                 else {
+                    resultEl.textContent = "Sigue intentando...";
+                    resultEl.style.color = 'var(--aztec-red-dark)';
+                }
+
+                liteGameContext.saldo += winAmount;
+                balanceEl.textContent = `Saldo Lite: ${liteGameContext.saldo}`;
+                actionBtn.disabled = liteGameContext.saldo < liteGameContext.apuesta;
+
+            }, 1600 + Math.random() * 500); // Tiempo total de giro
+        }
+
+
+        // --- Función para Promociones ---
+        function openPromotionDetails(promo) {
+             // Abrir modal de simulación genérico para mostrar detalles de la promo
+             const modal = document.getElementById('gameSimulationModal');
+             const titleElement = document.getElementById('simulationGameName');
+             const imageElement = document.getElementById('simulationGameImage');
+             const descriptionElement = document.getElementById('simulationGameDescription');
+             const resultElement = document.getElementById('simulationGameResult');
+
+              if (modal && titleElement && imageElement && descriptionElement && resultElement) {
+                 titleElement.innerHTML = `<i class="fas fa-gift"></i> ${promo.name || 'Ofrenda Especial'}`;
+                 imageElement.src = promo.imageUrl || 'https://via.placeholder.com/400x240/FFD700/1E1E1E?text=Ofrenda';
+                 imageElement.alt = `Promoción: ${promo.name || 'Bono'}`;
+                 descriptionElement.innerHTML = `<strong>${promo.description || 'Detalles de la promoción.'}</strong> <br><br> <i>(Simulación: Esta es solo información. En un casino real, podrías reclamar el bono aquí).</i>`; // Usar innerHTML para saltos de línea
+                 resultElement.style.display = 'none'; // Ocultar área de resultado
+                 resultElement.textContent = '';
+                 openModal('gameSimulationModal');
+             } else {
+                 // Fallback por si falla el modal
+                 alert(`Promoción: ${promo.name}\n${promo.description}`);
+             }
+         }
+
+
+        // --- Funciones de Suscripción ---
+        async function handleSubscriptionAttempt(tier) {
+            if (!currentUser) {
+                showStatus("Debes iniciar sesión o registrarte para suscribirte.", false, 5000);
+                openModal('loginModal'); // Abrir modal de login
+                return;
+            }
+            if (currentUser.is_subscribed && currentUser.subscription_tier === tier) {
+                 showStatus(`Ya estás suscrito al Plan ${tier}.`, false, 4000);
+                 return;
+            }
+
+            const confirmation = confirm(`¿Deseas suscribirte al Plan ${tier}? (Esto es una simulación, no se realizará ningún cargo real).`);
+            if (!confirmation) return;
+
+            showStatus(`Procesando suscripción al Plan ${tier}...`, true);
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/subscribe`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}` // Enviar token
+                    },
+                    body: JSON.stringify({ tier: tier }) // Enviar el plan elegido
+                });
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    currentUser = data.user; // Actualizar datos del usuario globalmente
+                    updateUIAfterLogin(); // Refrescar la UI del header
+                    showStatus(data.message || `¡Suscripción a ${tier} exitosa!`, false, 7000);
+                     updateGameCardsAvailability(); // Habilitar juegos correspondientes
+                     closeModal('welcomeModal'); // Cerrar modal de bienvenida si estaba abierto
+                } else {
+                    showStatus(`Error en suscripción: ${data.message || 'No se pudo completar.'}`, false, 6000);
+                }
+            } catch (error) {
+                 showStatus('Error de conexión al intentar suscribirse.', false, 6000);
+                 console.error("Error de red en suscripción:", error);
+            } finally {
+                 hideStatus();
+            }
+        }
+
+        // --- Funciones de UI Auxiliares ---
+        function showWelcomeModalIfNeeded() {
+             // Mostrar solo si no hay usuario logueado O si está logueado pero NO suscrito
+             if (!currentUser || !currentUser.is_subscribed) {
+                 const welcomeMsgElement = document.getElementById('welcomeMessage');
+                 if (welcomeMsgElement) {
+                     if (currentUser) { // Logueado pero no suscrito
+                          welcomeMsgElement.innerHTML = `¡Hola ${currentUser.username}! Ometéotl, el dios dual, percibe tu presencia. Para disfrutar de la gloria completa de Aztlán y sus tesoros, considera unirte a nuestro clan con una suscripción.`;
+                     } else { // No logueado
+                          welcomeMsgElement.innerHTML = `Ometéotl, el dios dual, percibe tu presencia. Para disfrutar de la gloria completa de Aztlán y sus tesoros, considera unirte a nuestro clan con una suscripción.`;
+                     }
+                 }
+                 // Solo abrir si no está ya abierto
+                 if(welcomeModal && window.getComputedStyle(welcomeModal).display === 'none'){
+                     openModal('welcomeModal');
+                 }
+             } else {
+                  closeModal('welcomeModal'); // Asegurarse que esté cerrado si está suscrito
+             }
+         }
+        function updateGameCardsAvailability() {
+            const gameCards = document.querySelectorAll('.game-card, .bingo-card, .sports-card'); // Incluir todas las tarjetas de juego/apuesta
+            const isSubscribed = currentUser?.is_subscribed ?? false; // ¿Está el usuario suscrito?
+
+            gameCards.forEach(card => {
+                const gameType = card.dataset.gameType;
+                const playButton = card.querySelector('.play-button, .bet-button'); // Botón de acción principal
+                const isLiteGame = gameType === 'lite_frontend';
+                const isPromoCard = card.classList.contains('promo-card'); // Las promos no se deshabilitan
+
+                if (!playButton || isPromoCard) return; // Si no hay botón o es promo, no hacer nada
+
+                // Deshabilitar juegos que NO sean 'lite_frontend' si el usuario NO está suscrito
+                 if (!isLiteGame && !isSubscribed) {
+                    playButton.disabled = true;
+                    playButton.title = "Requiere suscripción para jugar.";
+                } else {
+                    // Habilitar todos los botones si está suscrito O si son Lite
+                    playButton.disabled = false;
+                    playButton.title = ""; // Limpiar tooltip
+                }
+
+                // Lógica más fina (ejemplo): Deshabilitar juegos de backend si es plan Obsidiana
+                 // if (gameType === 'simulated_backend' && currentUser?.subscription_tier === 'Obsidiana') {
+                 //     playButton.disabled = true;
+                 //     playButton.title = "Requiere Plan Quetzal o superior.";
+                 //     // Asegurarse de que el CSS muestre un mensaje diferente si ya estaba deshabilitado
+                 //     if (!isSubscribed) playButton.title = "Requiere suscripción para jugar.";
+                 // }
+
+            });
+        }
+
+        // --- Inicialización al Cargar la Página ---
+        function setupSidebarAndScroll() {
+            const scrollLinks = document.querySelectorAll('.scroll-link');
+             scrollLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                         // Cerrar sidebar en móvil antes de hacer scroll
+                        if (sidebar && window.innerWidth < 992) {
+                             sidebar.classList.remove('open');
+                        }
+                        // Scroll suave
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // Opcional: actualizar link activo (requiere más lógica)
+                    }
+                });
+            });
+
+            // Toggle Sidebar
+             if (sidebarToggle && sidebar && mainContent) {
+                sidebarToggle.addEventListener('click', () => {
+                    sidebar.classList.toggle('open');
+                     // Opcional: Podrías añadir lógica para empujar el contenido principal
+                     // if (sidebar.classList.contains('open')) {
+                     //    mainContent.style.marginLeft = 'var(--sidebar-width)';
+                     // } else {
+                     //    mainContent.style.marginLeft = '0';
+                     // }
+                });
+                 // Cerrar sidebar si se hace click fuera en móvil
+                 document.addEventListener('click', (e) => {
+                     if (window.innerWidth < 992 && sidebar.classList.contains('open') && !sidebar.contains(e.target) && e.target !== sidebarToggle && !sidebarToggle.contains(e.target)) {
+                         sidebar.classList.remove('open');
+                     }
+                 });
+             } else {
+                console.warn("Elementos del sidebar (toggle, sidebar, mainContent) no encontrados.");
+             }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("DOM Cargado. Inicializando Gran Aztlán...");
+            setupSidebarAndScroll(); // Configurar interactividad del sidebar y scroll
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) yearSpan.textContent = new Date().getFullYear(); // Actualizar año
+
+            // Añadir listeners a formularios (una sola vez)
+            document.getElementById('login-form')?.addEventListener('submit', handleLogin);
+            document.getElementById('register-form')?.addEventListener('submit', handleRegister);
+
+            // Cargar perfil y luego juegos
+            fetchUserProfile().then(() => {
+                 loadGames(); // Cargar juegos dinámicos (mesa, vivo, bingo, promos)
+                 // El modal de bienvenida se muestra dentro de fetchUserProfile o al final si no hay token
+            }).catch(err => {
+                 console.error("Error en la secuencia de inicialización:", err);
+                 // Asegurar estado por defecto si todo falla
+                 updateUIAfterLogout();
+                 showWelcomeModalIfNeeded();
+                 loadGames(); // Intentar cargar juegos incluso si falla el perfil
+            });
+        });
+
+    </script>
+
+</body>
+</html>
